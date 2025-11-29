@@ -1,32 +1,39 @@
 import streamlit as st
 import os
 
-st.set_page_config(page_title="Portfólio de Natal", layout="wide")
+st.set_page_config(page_title="Portfólio L.D.M", layout="wide", page_icon="🎅")
 
-st.title("🎅 Galeria de Artes de Natal")
-st.markdown("### Confira abaixo as opções disponíveis para personalização.")
+arquivo_logo = "logo.png"
+
+col_hdr_esq, col_hdr_dir = st.columns([1, 6])
+
+with col_hdr_esq:
+    if os.path.exists(arquivo_logo):
+        st.image(arquivo_logo, use_container_width=True)
+
+with col_hdr_dir:
+    st.title("L.D.M Personalizados")
+    st.markdown("#### Coleção Especial de Natal 🎅")
+
 st.write("---")
+st.markdown("### Selecione sua arte preferida")
+st.markdown("Navegue pela galeria abaixo e escolha o número da opção desejada para sua personalização.")
 
 extensoes_validas = ['.jpg', '.jpeg', '.png', '.webp']
-
 todos_arquivos = os.listdir('.')
-
-imagens = [arq for arq in todos_arquivos if any(arq.lower().endswith(ext) for ext in extensoes_validas)]
+imagens = [arq for arq in todos_arquivos if any(arq.lower().endswith(ext) for ext in extensoes_validas) and arq != arquivo_logo]
 
 if not imagens:
-    st.error("Nenhuma imagem encontrada na pasta!")
+    st.info("Aguardando carregamento das imagens na galeria...")
 else:
-    colunas = st.columns(3)
-    
+    colunas = st.columns(4)
     for index, arquivo_imagem in enumerate(imagens):
-        
-        coluna_atual = colunas[index % 3]
-        
+        coluna_atual = colunas[index % 4]
         with coluna_atual:
             with st.container(border=True):
                 st.image(arquivo_imagem, use_container_width=True)
-                st.button(f"Opção {index + 1}", key=f"btn_{index}", use_container_width=True)
-                st.caption(f"Arquivo: {arquivo_imagem}")
+                st.markdown(f"<h5 style='text-align: center;'>🎁 Opção {index + 1}</h5>", unsafe_allow_html=True)
+                st.caption(f"Ref: {arquivo_imagem}")
 
 st.write("---")
-st.success("Fim da galeria.")
+st.markdown("<p style='text-align: center; color: grey;'>© L.D.M Personalizados - Todos os direitos reservados.</p>", unsafe_allow_html=True)
