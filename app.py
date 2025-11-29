@@ -11,8 +11,7 @@ with col_hdr_esq:
         st.image(arquivo_logo, use_container_width=True)
 
 with col_hdr_dir:
-    st.title("L.D.M Personalizados")
-    st.markdown("#### Coleção Especial de Natal 🎅")
+    st.title("#### Coleção Especial de Natal 🎅")
 
 st.write("---")
 st.markdown("### Selecione sua arte preferida")
