@@ -8,7 +8,6 @@ arquivo_logo = "logo.png"
 col_hdr_esq, col_hdr_dir = st.columns([1, 6])
 
 with col_hdr_esq:
-    if os.path.exists(arquivo_logo):
         st.image(arquivo_logo, use_container_width=True)
 
 with col_hdr_dir:
