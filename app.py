@@ -16,7 +16,6 @@ with col_hdr_dir:
 
 st.write("---")
 st.markdown("### Selecione sua arte preferida")
-st.markdown("Navegue pela galeria abaixo e escolha o número da opção desejada para sua personalização.")
 
 extensoes_validas = ['.jpg', '.jpeg', '.png', '.webp']
 todos_arquivos = os.listdir('.')
